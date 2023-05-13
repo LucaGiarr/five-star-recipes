@@ -6,4 +6,8 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
 
-    summernote_fields = ('ingredients', 'method')
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = ['title', 'method']
+    prepopulated_fields = {'slug': ('title',)}
+    list_filter = ('status', 'created_on')
+    summernote_fields = ('method')
