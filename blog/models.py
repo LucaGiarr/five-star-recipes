@@ -13,9 +13,9 @@ class Recipe(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_recipes"
     )
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
+    ingredients = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField()
+    method = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
