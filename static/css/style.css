@@ -35,12 +35,6 @@
     width: 72%;
 }
 
-.card-flex-centre {
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 0;
-}
-
 /* Media queries */
 @media only screen and (max-width: 1200px) {
 
