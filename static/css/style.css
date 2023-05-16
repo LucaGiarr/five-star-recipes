@@ -27,14 +27,6 @@
     border-width: 0;
 }
 
-.element-centre {
-    margin: auto;
-}
-
-.w-80 {
-    width: 72%;
-}
-
 /* Media queries */
 @media only screen and (max-width: 1200px) {
 
@@ -59,4 +51,35 @@
         font-weight: bold;
     }
 
+}
+
+/* styles New entries section */
+.card {
+    border: none;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+
+}
+
+.m--12px {
+    margin: -12px;
+}
+
+.p-12px {
+    padding: 12px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #e1e1e1;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev span,
+.carousel-control-next span {
+    width: 1.5rem;
+    height: 1.5rem;
 }
