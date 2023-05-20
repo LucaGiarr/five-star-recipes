@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
+CATEGORY = ((0, "Starter"), (1, "Main Course"),
+            (2, "Dessert"), (3, "Other"))
+CHOICE = ((0, "No"), (1, "Yes"))
 
 
 class Recipe(models.Model):
@@ -12,14 +15,20 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_recipes"
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image')
     ingredients = models.TextField(blank=True)
+    preparing_time = models.CharField(max_length=200, default='10 mins')
+    cooking_time = models.CharField(max_length=200, default='10 mins')
+    serves = models.IntegerField(default=2)
+    difficulty = models.CharField(max_length=200, default='Easy')
+    category = models.IntegerField(choices=CATEGORY, default=1)
     updated_on = models.DateTimeField(auto_now=True)
     method = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogrecipe_like', blank=True)
+    receipe_of_day = models.IntegerField(choices=CHOICE, default=0)
 
     class Meta:
         ordering = ["-created_on"]

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- section title and image of recipe -->
+<section>
+    <div class="container pt-2">
+        <div class="row text-center">
+            <h2>TITLE OF RECIPE</h2>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <img src="Arancino.webp" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section ingredients -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col coloured-box">
+                <p>
+                <h4 class="text-line"><span>Ingredients</span></h4>
+                </p>
+
+                <!-- list of ingredients -->
+                <div class="row p-left-30">
+                    <ul>
+                        <li>200 gr chocolate</li>
+                        <li>3 eggs</li>
+                        <li>100 gr sugar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section recipe details -->
+<section>
+    <div class=" container">
+        <div class="row">
+            <div class="col coloured-box mt-0">
+                <p>
+                <h4 class="text-line"><span>Recipe Details</span></h4>
+                </p>
+
+                <!-- Details -->
+                <div class="row p-left-30">
+                    <ul>
+                        <li>Preparing Time:</li>
+                        <li>Cooking Time:</li>
+                        <li>Serves:</li>
+                        <li>Difficulty:</li>
+                        <li>Category:</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section method -->
+<section>
+    <div class=" container">
+        <div class="row">
+            <div class="col coloured-box mt-0">
+                <p>
+                <h4 class="text-line"><span>Method</span></h4>
+                </p>
+
+                <!-- Details -->
+                <div class="row p-left-30">
+                    <ol>
+                        <li>Preparing Time:</li>
+                        <li>Cooking Time:</li>
+                        <li>Serves:</li>
+                        <li>Difficulty:</li>
+                        <li>Category:</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}
