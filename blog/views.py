@@ -13,3 +13,21 @@ class StartersList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=0)
     template_name = 'starters.html'
+
+
+class MainCoursesList(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=1)
+    template_name = 'maincourses.html'
+
+
+class DessertsList(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=2)
+    template_name = 'desserts.html'
+
+
+class OtherList(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, category=3)
+    template_name = 'other.html'
