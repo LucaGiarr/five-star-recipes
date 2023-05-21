@@ -6,7 +6,6 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 CATEGORY = ((0, "Starter"), (1, "Main Course"),
             (2, "Dessert"), (3, "Other"))
-CHOICE = ((0, "No"), (1, "Yes"))
 
 
 class Recipe(models.Model):
@@ -28,7 +27,6 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogrecipe_like', blank=True)
-    receipe_of_day = models.IntegerField(choices=CHOICE, default=0)
 
     class Meta:
         ordering = ["-created_on"]

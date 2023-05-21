@@ -18,37 +18,33 @@
     <div class="container">
         <div class="row g-3 mt-3">
             <div class="col-12 col-lg-4">
+
+                
+                {% for recipe in recipe_list %}
                 <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                    <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <a href="#">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                        </a>
+                        <!-- Description -->
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                            the card's content. {{ recipe.category }}
+                        </p>
+                        <!-- Author -->
+                        <p>
+                            Author: {{ recipe.author }}
+                        </p>
+                        <!-- Likes -->
+                        <p class="card-text text-muted h6">
+                            <i class="far fa-heart"></i>{{ recipe.number_of_likes }}
+                        </p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+
+                {% endfor %}
+
             </div>
         </div>
     </div>
@@ -76,7 +72,8 @@
                     <div class="row g-3 mt-3">
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -88,7 +85,8 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -100,7 +98,8 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -116,7 +115,8 @@
                     <div class="row g-3 mt-3">
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -128,7 +128,8 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -140,7 +141,8 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                                <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png"
+                                    class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -175,7 +177,8 @@
                     <div class="row g-3 mt-3">
                         <div class="col-12">
                             <div class="card">
-                                <img src="static/images/Cannoli-siciliani_650x433_wm.avif" class="card-img-top" alt="...">
+                                <img src="static/images/Cannoli-siciliani_650x433_wm.avif" class="card-img-top"
+                                    alt="...">
                                 <!-- Do a loop through new entries -->
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -193,7 +196,8 @@
                     <div class="row g-3 mt-3">
                         <div class="col-12">
                             <div class="card">
-                                <img src="static/images/Cannoli-siciliani_650x433_wm.avif" class="card-img-top" alt="...">
+                                <img src="static/images/Cannoli-siciliani_650x433_wm.avif" class="card-img-top"
+                                    alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up
@@ -240,7 +244,8 @@
         <div class="row g-3 mt-3">
             <div class="col-12 col-lg-4">
                 <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top"
+                        alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -251,7 +256,8 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top"
+                        alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -262,7 +268,8 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
-                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top" alt="...">
+                    <img src="static/images/Lasagne-zucca-e-salsiccia_780x520_wm copy.png" class="card-img-top"
+                        alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
