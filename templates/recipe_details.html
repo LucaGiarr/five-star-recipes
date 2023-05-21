@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <img src="Arancino.webp" class="img-fluid" alt="...">
+                <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="...">
             </div>
         </div>
     </div>
@@ -27,11 +27,9 @@
 
                 <!-- list of ingredients -->
                 <div class="row p-left-30">
-                    <ul>
-                        <li>200 gr chocolate</li>
-                        <li>3 eggs</li>
-                        <li>100 gr sugar</li>
-                    </ul>
+
+                    {{ recipe.ingredients | safe }}
+
                 </div>
             </div>
         </div>
@@ -50,11 +48,11 @@
                 <!-- Details -->
                 <div class="row p-left-30">
                     <ul>
-                        <li>Preparing Time:</li>
-                        <li>Cooking Time:</li>
-                        <li>Serves:</li>
-                        <li>Difficulty:</li>
-                        <li>Category:</li>
+                        <li>Preparing Time: {{ recipe.preparing_time | safe }}</li>
+                        <li>Cooking Time: {{ recipe.cooking_time | safe }}</li>
+                        <li>Serves: {{ recipe.serves | safe }}</li>
+                        <li>Difficulty: {{ recipe.difficulty | safe }}</li>
+                        <li>Category: {{ recipe.category | safe }}</li>
                     </ul>
                 </div>
             </div>
@@ -73,13 +71,9 @@
 
                 <!-- Details -->
                 <div class="row p-left-30">
-                    <ol>
-                        <li>Preparing Time:</li>
-                        <li>Cooking Time:</li>
-                        <li>Serves:</li>
-                        <li>Difficulty:</li>
-                        <li>Category:</li>
-                    </ol>
+                    
+                    {{ recipe.method | safe }}
+                    
                 </div>
             </div>
         </div>

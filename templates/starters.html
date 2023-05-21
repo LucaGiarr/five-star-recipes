@@ -23,7 +23,7 @@
                 <div class="card">
                     <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="#">
+                        <a href="{% url 'recipe_details' recipe.slug %}">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                         </a>
                         <!-- Description -->
