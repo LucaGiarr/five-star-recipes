@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <!-- section title and image of recipe -->
 <section>
     <div class="container pt-2">
@@ -128,8 +130,27 @@
                         {{ comment.body | linebreaks }}
                     </div>
                     {% endfor %}
-
                 </div>
+
+                {% if user.is_authenticated %}
+                <div class="col col-lg-4">
+                    {% if commented %}
+                    <div class="alert alert-success fade show" id="msg" role="alert">
+                        Thanks! Your comment is waiting for approval.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+
+                    <h4>Leave a comment:</h4>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    </form>
+                    {% endif %}
+                </div>
+
             </div>
         </div>
     </div>
