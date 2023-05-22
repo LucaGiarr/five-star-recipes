@@ -6,14 +6,35 @@
 <section>
     <div class="container pt-2">
         <div class="row text-center">
-            <h2>TITLE OF RECIPE</h2>
+            <h2>{{ recipe.title }}</h2>
         </div>
         <div class="row">
             <div class="col text-center">
                 <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="...">
             </div>
         </div>
+
+
+        <div class="row like-comments-row">
+            <!-- Likes icon -->
+            <div class="col-1">
+                <p class="text-muted h6">
+                    <i class="far fa-heart"></i>{{ recipe.number_of_likes }}
+                </p>
+            </div>
+            <!-- Comments icon -->
+            <div class="col-1">
+                {% with comments.count as total_comments %}
+                <p class="text-muted h6">
+                    <i class="far fa-comments"></i>{{ total_comments }}
+                </p>
+                {% endwith %}
+            </div>
+        </div>
+
+
     </div>
+
 </section>
 
 <!-- section ingredients -->
@@ -71,9 +92,29 @@
 
                 <!-- Details -->
                 <div class="row p-left-30">
-                    
+
                     {{ recipe.method | safe }}
-                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section comments -->
+<section>
+    <div class=" container">
+        <div class="row">
+            <div class="col coloured-box mt-0">
+                <p>
+                <h4 class="text-line"><span>Comments</span></h4>
+                </p>
+
+                <!-- comments -->
+                <div class="row p-left-30">
+
+                    <!-- {{ recipe.method | safe }} -->
+
                 </div>
             </div>
         </div>
