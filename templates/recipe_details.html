@@ -26,10 +26,27 @@
             </div>
             <!-- Likes icon -->
             <div class="col-1">
-                <p class="text-muted h6">
-                    <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
-                </p>
+                {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'recipe_like' recipe.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if liked %}
+                    <button type="submit" name="blogrecipe_id" value="{{recipe.slug}}" class="btn-like"><i
+                            class="fa-solid fa-heart"></i></button>
+                    {% else %}
+                    <button type="submit" name="blogrecipe_id" value="{{recipe.slug}}" class="btn-like"><i
+                            class="fa-regular fa-heart"></i></button>
+                    {% endif %}
+                </form>
+                {% else %}
+                <span class="text-muted h6">
+                    <i class="far fa-heart"></i>
+                </span>
+                {% endif %}
+                <span class="text-muted h6">
+                    {{ recipe.number_of_likes }}
+                </span>
             </div>
+
             <!-- Comments icon -->
             <div class="col-1">
                 {% with comments.count as total_comments %}

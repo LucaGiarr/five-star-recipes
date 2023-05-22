@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Recipe
 from .forms import CommentForm
 
@@ -8,30 +9,35 @@ class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
+    paginate_by = 6
 
 
 class StartersList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=0)
     template_name = 'starters.html'
+    paginate_by = 6
 
 
 class MainCoursesList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=1)
     template_name = 'maincourses.html'
+    paginate_by = 6
 
 
 class DessertsList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=2)
     template_name = 'desserts.html'
+    paginate_by = 6
 
 
 class OtherList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=3)
     template_name = 'other.html'
+    paginate_by = 6
 
 
 class RecipeDetails(View):
@@ -40,6 +46,7 @@ class RecipeDetails(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('created_on')
+
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -51,6 +58,7 @@ class RecipeDetails(View):
                 "recipe": recipe,
                 "comments": comments,
                 "commented": False,
+                "liked": liked,
                 "comment_form": CommentForm()
             },
         )
@@ -62,7 +70,7 @@ class RecipeDetails(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
@@ -81,6 +89,20 @@ class RecipeDetails(View):
                 "recipe": recipe,
                 "comments": comments,
                 "commented": True,
+                "liked": liked,
                 "comment_form": CommentForm()
             },
         )
+
+
+class RecipeLike(View):
+
+    def post(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+
+        if recipe.likes.filter(id=self.request.user.id).exists():
+            recipe.likes.remove(request.user)
+        else:
+            recipe.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('recipe_details', args=[slug]))
