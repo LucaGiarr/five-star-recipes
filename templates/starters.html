@@ -30,14 +30,30 @@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.
                         </p>
-                        <!-- Author -->
-                        <p>
-                            Author: {{ recipe.author }}
-                        </p>
-                        <!-- Likes -->
-                        <p class="card-text text-muted h6">
-                            <i class="far fa-heart"></i>{{ recipe.number_of_likes }}
-                        </p>
+                        <div class="row">
+                            <div class="col-8">
+                                <!-- Author -->
+                                <p>
+                                    Author: {{ recipe.author }}
+                                </p>
+                            </div>
+
+                            <!-- Likes -->
+                            <div class="col-2">
+                                <p class="card-text text-muted h6">
+                                    <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
+                                </p>
+                            </div>
+                        
+                            <!-- Comments icon -->
+                            <div class="col-2">
+                                {% with recipe.comments.count as total_comments %}
+                                <p class="text-muted h6">
+                                    <i class="far fa-message"></i> {{ total_comments }}
+                                </p>
+                                {% endwith %}
+                            </div>
+                        </div>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>

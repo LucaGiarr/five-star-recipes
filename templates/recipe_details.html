@@ -16,23 +16,27 @@
 
 
         <div class="row like-comments-row">
+            <div class="col col-lg-2">
+                <!-- Author -->
+                <p>
+                    <strong>Author:</strong> {{ recipe.author }}
+                </p>
+            </div>
             <!-- Likes icon -->
             <div class="col-1">
                 <p class="text-muted h6">
-                    <i class="far fa-heart"></i>{{ recipe.number_of_likes }}
+                    <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
                 </p>
             </div>
             <!-- Comments icon -->
             <div class="col-1">
                 {% with comments.count as total_comments %}
                 <p class="text-muted h6">
-                    <i class="far fa-comments"></i>{{ total_comments }}
+                    <i class="far fa-message"></i> {{ total_comments }}
                 </p>
                 {% endwith %}
             </div>
         </div>
-
-
     </div>
 
 </section>
@@ -113,7 +117,17 @@
                 <!-- comments -->
                 <div class="row p-left-30">
 
-                    <!-- {{ recipe.method | safe }} -->
+                    {% for comment in comments %}
+                    <div class="comments" style="padding: 10px;">
+                        <p class="font-weight-bold">
+                            {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                                {{ comment.created_on }}
+                            </span> wrote:
+                        </p>
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% endfor %}
 
                 </div>
             </div>
