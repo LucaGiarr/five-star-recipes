@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Recipe, Comment
+from .models import UserProfile, Recipe, Comment
 from django_summernote.admin import SummernoteModelAdmin
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+
+    list_display = ('user',)
 
 
 @admin.register(Recipe)

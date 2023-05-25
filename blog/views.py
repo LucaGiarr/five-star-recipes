@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import DetailView
 from django.http import HttpResponseRedirect
-from .models import Recipe
+from .models import Recipe, UserProfile
 from .forms import CommentForm
 
 
@@ -50,7 +51,7 @@ class RecipeDetails(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         isFavourite = False
         if recipe.favourites.filter(id=self.request.user.id).exists():
             isFavourite = True
@@ -76,7 +77,7 @@ class RecipeDetails(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         isFavourite = False
         if recipe.favourites.filter(id=self.request.user.id).exists():
             isFavourite = True
@@ -130,3 +131,22 @@ class RecipeFavourite(View):
             recipe.favourites.add(request.user)
 
         return HttpResponseRedirect(reverse('recipe_details', args=[slug]))
+
+
+class ShowProfilePage(DetailView):
+    model = UserProfile
+    template_name = 'account/user_profile.html'
+
+    def get_context_data(self, *args, **kwargs):        
+        context = super(ShowProfilePage, self).get_context_data(
+            *args, **kwargs)
+
+        page_user = get_object_or_404(UserProfile, id=self.kwargs['pk'])
+
+        context["page_user"] = page_user
+        return context
+
+
+def favourite_list(request):
+    new = Recipe.objects.filter(favourites=request.user)
+    return render(request, 'favourites.html', {'new': new})
