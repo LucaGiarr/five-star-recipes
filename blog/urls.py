@@ -9,4 +9,6 @@ urlpatterns = [
     path('other', views.OtherList.as_view(), name='other'),
     path('<slug:slug>/', views.RecipeDetails.as_view(), name='recipe_details'),
     path('like/<slug:slug>', views.RecipeLike.as_view(), name='recipe_like'),
+    path('favourite/<slug:slug>',
+         views.RecipeFavourite.as_view(), name='recipe_favourite'),
 ]

@@ -50,6 +50,10 @@ class RecipeDetails(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
+        
+        isFavourite = False
+        if recipe.favourites.filter(id=self.request.user.id).exists():
+            isFavourite = True
 
         return render(
             request,
@@ -59,6 +63,7 @@ class RecipeDetails(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
+                "isFavourite": isFavourite,
                 "comment_form": CommentForm()
             },
         )
@@ -67,9 +72,14 @@ class RecipeDetails(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('created_on')
+
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
+        
+        isFavourite = False
+        if recipe.favourites.filter(id=self.request.user.id).exists():
+            isFavourite = True
 
         comment_form = CommentForm(data=request.POST)
 
@@ -90,6 +100,7 @@ class RecipeDetails(View):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
+                "isFavourite": isFavourite,
                 "comment_form": CommentForm()
             },
         )
@@ -104,5 +115,18 @@ class RecipeLike(View):
             recipe.likes.remove(request.user)
         else:
             recipe.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('recipe_details', args=[slug]))
+
+
+class RecipeFavourite(View):
+
+    def post(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+
+        if recipe.favourites.filter(id=self.request.user.id).exists():
+            recipe.favourites.remove(request.user)
+        else:
+            recipe.favourites.add(request.user)
 
         return HttpResponseRedirect(reverse('recipe_details', args=[slug]))

@@ -36,11 +36,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
 
-                    <form class="d-flex marg-left-right" role="search">
+                    <!-- <form class="d-flex marg-left-right" role="search">
                         <input class="form-control me-2 search-bar-small-screen" type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success search-bar-small-screen" type="submit">Search</button>
-                    </form>
+                    </form> -->
 
                     <div class="offcanvas-body">
                         <ul class="navbar-nav flex-grow-1 ps-3 my-auto">
@@ -58,12 +58,12 @@
                         </ul>
 
                         <ul class="navbar-nav flex-grow-1 my-auto">
-                            <form class="d-flex" role="search">
+                            <!-- <form class="d-flex" role="search">
                                 <input class="form-control me-2 search-bar-large-screen" type="search"
                                     placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success search-bar-large-screen"
                                     type="submit">Search</button>
-                            </form>
+                            </form> -->
 
                         </ul>
                         <ul class="navbar-nav my-auto marg-left-right">
@@ -96,6 +96,20 @@
                 </div>
             </div>
         </nav>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     <main class="flex-shrink-0 main-bg">
@@ -170,6 +184,15 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/b08c9ce26d.js" crossorigin="anonymous"></script>
+
+    <!-- script to close the alert at the top of the page -->
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 3000);
+    </script>
 </body>
 
 </html>

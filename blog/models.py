@@ -27,6 +27,8 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogrecipe_like', blank=True)
+    favourites = models.ManyToManyField(
+        User, related_name='blogrecipe_favourite', blank=True)
 
     class Meta:
         ordering = ["-created_on"]
