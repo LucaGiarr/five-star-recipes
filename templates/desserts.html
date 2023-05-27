@@ -22,7 +22,7 @@
                 <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{% url 'desserts' %}">Desserts</a>
+                <a class="nav-link active" href="{% url 'desserts' %}"><strong>Desserts</strong></a>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'other' %}">Other</a>
             </li>
@@ -34,18 +34,25 @@
             </li>
 
             {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_profile' user.id %}">Welcome {{ user }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-            </li>
+            <div class="dropdown show">
+                <a class="btn dropdown-toggle align-left p-left-right-0" href="{% url 'user_profile' user.id %}" role="button"
+                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+            
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'user_profile' user.id %}">My Profile</a>
+                    <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourite recipes</a>
+                    <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                </div>
+            </div>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
             </li>
             {% endif %}
 
