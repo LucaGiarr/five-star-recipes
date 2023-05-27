@@ -1,5 +1,60 @@
 {% extends "base.html" %}
 
+{% block navbar-categories-logs %}
+
+<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 ps-3 my-auto">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'starters' %}">Starters</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'other' %}">Other</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav my-auto marg-left-right">
+            <li>
+                <hr>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_profile' user.id %}">Welcome {{ user }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block content %}
 
 {% load crispy_forms_tags %}
@@ -25,7 +80,7 @@
                 </p>
             </div>
             <!-- Likes icon -->
-            <div class="col-2 p-0">
+            <div class="col-2 p-0 sm-width-icons">
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'recipe_like' recipe.slug %}" method="POST">
                     {% csrf_token %}
@@ -49,16 +104,16 @@
             </div>
 
             <!-- Favourites icon -->
-            <div class="col-2 p-0">
+            <div class="col-2 p-0 sm-width-icons">
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'recipe_favourite' recipe.slug %}" method="POST">
                     {% csrf_token %}
                     <!-- Favourites -->
                     {% if isFavourite %}
-                    <button type="submit" name="blogrecipefav_id" value="{{recipe.slug}}" class="btn-like"><i
+                    <button type="submit" name="blogrecipefav_id" value="{{recipe.slug}}" class="btn-fav"><i
                             class="fa-solid fa-bookmark"></i></button>
                     {% else %}
-                    <button type="submit" name="blogrecipefav_id" value="{{recipe.slug}}" class="btn-like"><i
+                    <button type="submit" name="blogrecipefav_id" value="{{recipe.slug}}" class="btn-fav"><i
                             class="fa-regular fa-bookmark"></i></button>
                     {% endif %}
 
@@ -73,7 +128,7 @@
 
 
             <!-- Comments icon -->
-            <div class="col-2 p-0">
+            <div class="col-2 p-0 pt-1 sm-width-icons">
                 {% with comments.count as total_comments %}
                 <p class="text-muted h6">
                     <i class="far fa-message"></i> {{ total_comments }}
