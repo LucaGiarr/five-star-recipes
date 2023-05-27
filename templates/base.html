@@ -36,64 +36,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
 
-                    <!-- <form class="d-flex marg-left-right" role="search">
-                        <input class="form-control me-2 search-bar-small-screen" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success search-bar-small-screen" type="submit">Search</button>
-                    </form> -->
+                    {% block navbar-categories-logs %}
 
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav flex-grow-1 ps-3 my-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="{% url 'starters' %}">Starters</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'other' %}">Other</a>
-                            </li>
-                        </ul>
+                    {% endblock %}
 
-                        <ul class="navbar-nav flex-grow-1 my-auto">
-                            <!-- <form class="d-flex" role="search">
-                                <input class="form-control me-2 search-bar-large-screen" type="search"
-                                    placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success search-bar-large-screen"
-                                    type="submit">Search</button>
-                            </form> -->
-
-                        </ul>
-                        <ul class="navbar-nav my-auto marg-left-right">
-                            <li>
-                                <hr>
-                            </li>
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'user_profile' user.id %}">Welcome {{ user.username }}</a>
-                                <!-- <span class="nav-link">Welcome {{ user.username }}</span> -->
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-
-
-                        <!-- <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
-                    </div>
                 </div>
             </div>
         </nav>
@@ -115,7 +61,7 @@
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
-        <!-- Content Goes here -->
+        
         {% endblock content %}
     </main>
 
