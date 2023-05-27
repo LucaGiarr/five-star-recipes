@@ -35,7 +35,7 @@
 
             {% if user.is_authenticated %}
             <div class="dropdown show">
-                <a class="btn dropdown-toggle align-left p-left-right-0" href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
+                <a class="btn dropdown-toggle nav-link align-left p-left-right-0" href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ user.username }}
                 </a>
