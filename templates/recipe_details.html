@@ -74,7 +74,7 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="...">
+                <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="recipe image">
             </div>
         </div>
 
@@ -141,6 +141,19 @@
                     <i class="far fa-message"></i> {{ total_comments }}
                 </p>
                 {% endwith %}
+            </div>
+        </div>
+
+        <div class="row like-comments-row">
+            <div class="col col-lg-2">
+                <!-- Website link -->
+                <p>
+                    <strong>Website: </strong>
+                    <a href="{{ recipe.website_url }}">
+                        {{ recipe.website }}
+                    </a>
+
+                </p>
             </div>
         </div>
     </div>
