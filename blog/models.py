@@ -15,6 +15,7 @@ class Recipe(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_recipes"
     )
     featured_image = CloudinaryField('image')
+    website = models.URLField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     ingredients = models.TextField(blank=True)
     preparing_time = models.CharField(max_length=200, default='10 mins')
