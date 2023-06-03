@@ -35,11 +35,12 @@
 
             {% if user.is_authenticated %}
             <div class="dropdown show">
-                <a class="btn dropdown-toggle nav-link align-left p-left-right-0" href="{% url 'user_profile' user.id %}" role="button"
-                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="btn dropdown-toggle nav-link align-left p-left-right-0"
+                    href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ user.username }}
                 </a>
-            
+
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{% url 'user_profile' user.id %}">My Profile</a>
                     <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourite recipes</a>
@@ -70,7 +71,7 @@
 <section>
     <div class="container pt-2">
         <div class="row text-center">
-            <h2>{{ recipe.title }}</h2>
+            <h1 class="p-3">{{ recipe.title }}</h1>
         </div>
         <div class="row">
             <div class="col text-center">
@@ -78,14 +79,14 @@
             </div>
         </div>
 
-
-        <div class="row like-comments-row">
+        <div class="row like-comments-row mt-4">
             <div class="col col-lg-2">
                 <!-- Author -->
                 <p>
                     <strong>Author:</strong> {{ recipe.author }}
                 </p>
             </div>
+
             <!-- Likes icon -->
             <div class="col-2 p-0 sm-width-icons">
                 {% if user.is_authenticated %}
@@ -145,7 +146,7 @@
         </div>
 
         <div class="row like-comments-row">
-            <div class="col col-lg-2">
+            <div class="col-8">
                 <!-- Website link -->
                 <p>
                     <strong>Website: </strong>
@@ -228,9 +229,9 @@
 <section>
     <div class=" container">
         <div class="row">
-            <div class="col coloured-box mt-0">
+            <div class="col coloured-box-comments mt-0 pb-3">
                 <p>
-                <h4 class="text-line"><span>Comments</span></h4>
+                <h4 class="text-line text-line-comments"><span>Comments</span></h4>
                 </p>
 
                 <!-- comments -->
@@ -258,12 +259,11 @@
                     </div>
                     {% endif %}
 
-                    <h4>Leave a comment:</h4>
-                    <p>Posting as: {{ user.username }}</p>
+                    <p class="pt-1">Posting as: {{ user.username }}</p>
                     <form method="post" style="margin-top: 1.3em;">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-success mt-2">Submit</button>
                     </form>
                     {% endif %}
                 </div>

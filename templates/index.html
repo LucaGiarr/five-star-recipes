@@ -35,16 +35,17 @@
 
             {% if user.is_authenticated %}
             <div class="dropdown show">
-                <a class="btn dropdown-toggle nav-link align-left p-left-right-0" href="{% url 'user_profile' user.id %}" role="button"
-                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="btn dropdown-toggle nav-link align-left p-left-right-0"
+                    href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ user.username }}
                 </a>
-            
+
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'user_profile' user.id %}">My Profile</a>
-                    <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourite recipes</a>
-                    <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
-                    <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                    <a class="dropdown-item nav-link" href="{% url 'user_profile' user.id %}">My Profile</a>
+                    <a class="dropdown-item nav-link" href="{% url 'favourite_list' %}">Favourite recipes</a>
+                    <a class="dropdown-item nav-link" href="{% url 'account_change_password' %}">Change Password</a>
+                    <a class="dropdown-item nav-link" href="{% url 'account_logout' %}">Sign Out</a>
                 </div>
             </div>
             {% else %}
@@ -88,18 +89,11 @@
                             <h5 class="card-title">{{ recipe.title }}</h5>
                         </a>
                         <!-- Description -->
-                        <p class="card-text">
+                        <div class="card-text">
                             {{ recipe.description| safe }}
-                        </p>
+                        </div>
 
                         <div class="row">
-                            <div class="col-8">
-                                <!-- Author -->
-                                <p>
-                                    <strong>Author:</strong> {{ recipe.author }}
-                                </p>
-                            </div>
-
                             <!-- Likes -->
                             <div class="col-2">
                                 <p class="card-text text-muted h6">
@@ -109,7 +103,7 @@
 
                             <!-- Comments icon -->
                             <div class="col-2">
-                                {% with recipe.comments.approved.count as total_comments %}
+                                {% with recipe.comments.count as total_comments %}
                                 <p class="text-muted h6">
                                     <i class="far fa-message"></i> {{ total_comments }}
                                 </p>

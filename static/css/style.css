@@ -3,7 +3,6 @@
 }
 
 .line-text-line {
-
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #000;
@@ -12,8 +11,7 @@
 }
 
 .line-text-line span {
-
-    background-color: white;
+    background-color: #F5EFE7;
     padding: 0 20px;
 }
 
@@ -27,9 +25,19 @@
     border-width: 0;
 }
 
-.align-left{
+.align-left {
     text-align: start;
 }
+
+.bg-body-nav {
+    background-color: #D8C4B6;
+}
+
+body {
+    background-color: #F5EFE7;
+    margin-bottom: -50px;
+}
+
 
 /* Media queries */
 @media only screen and (max-width: 1200px) {
@@ -55,6 +63,14 @@
         font-weight: bold;
     }
 
+}
+
+.card-title {
+    height: 45px;
+}
+
+.card-text p {
+    height: 90px;
 }
 
 /* styles New entries section */
@@ -98,7 +114,8 @@
     margin: 30px 0 20px;
 }
 
-.text-line span {
+.text-line span,
+.text-line-comments span {
 
     background-color: whitesmoke;
     padding: 0 20px 0 0;
@@ -109,12 +126,23 @@
     margin: 0 100px;
 }
 
-.coloured-box {
+.coloured-box,
+.coloured-box-comments {
     /* padding: 20px 40px 0 40px; */
     margin: 25px;
     border: 1px solid lightgray;
     border-radius: 5px;
     background-color: whitesmoke;
+}
+
+.coloured-box-comments {
+    background-color: white;
+    border: white;
+}
+
+.text-line-comments span {
+
+    background-color: white;
 }
 
 .p-left-30 {
@@ -128,7 +156,7 @@
 
 /* Styles recipe_details */
 .like-comments-row {
-    margin: 20px 0 0 20px;
+    margin: 10px 0 0 10px;
 }
 
 .btn-like,
@@ -157,7 +185,7 @@
     text-align: center;
 }
 
-.card-title-link{
+.card-title-link {
     color: black;
     text-decoration: none;
 }
