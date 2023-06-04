@@ -10,21 +10,18 @@ class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
-    paginate_by = 6
 
 
 class StartersList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=0)
     template_name = 'starters.html'
-    paginate_by = 6
 
 
 class MainCoursesList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=1)
     template_name = 'maincourses.html'
-    paginate_by = 6
 
 
 class DessertsList(generic.ListView):
@@ -38,7 +35,6 @@ class OtherList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=3)
     template_name = 'other.html'
-    paginate_by = 6
 
 
 class RecipeDetails(View):
@@ -137,7 +133,7 @@ class ShowProfilePage(DetailView):
     model = UserProfile
     template_name = 'account/user_profile.html'
 
-    def get_context_data(self, *args, **kwargs):        
+    def get_context_data(self, *args, **kwargs):
         context = super(ShowProfilePage, self).get_context_data(
             *args, **kwargs)
 
