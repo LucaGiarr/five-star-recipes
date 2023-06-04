@@ -36,11 +36,12 @@
             {% if user.is_authenticated %}
             <div class="nav-item">
                 <div class="dropdown show">
-                    <a class="btn dropdown-toggle nav-link align-left p-left-right-0 active" href="{% url 'user_profile' user.id %}"
-                        role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn dropdown-toggle nav-link align-left p-left-right-0 active"
+                        href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <strong>{{ user.username }}</strong>
                     </a>
-            
+
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'user_profile' user.id %}">My Profile</a>
                         <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourite recipes</a>
@@ -87,23 +88,15 @@
                 <div class="card">
                     <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="{% url 'recipe_details' recipe.slug %}">
+                        <a class="card-title-link" href="{% url 'recipe_details' recipe.slug %}">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                         </a>
                         <!-- Description -->
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content. {{ recipe.category }}
-                        </p>
-                        
-                        <div class="row">
-                            <div class="col-8">
-                                <!-- Author -->
-                                <p>
-                                    Author: {{ recipe.author }}
-                                </p>
-                            </div>
-                            
+                        <div class="card-text">
+                            {{ recipe.description| safe }}
+                        </div>
 
+                        <div class="row">
                             <!-- Likes -->
                             <div class="col-2">
                                 <p class="card-text text-muted h6">
@@ -113,15 +106,13 @@
 
                             <!-- Comments icon -->
                             <div class="col-2">
-                            {% with recipe.comments.approved.count as total_comments %}
+                                {% with recipe.comments.count as total_comments %}
                                 <p class="text-muted h6">
                                     <i class="far fa-message"></i> {{ total_comments }}
                                 </p>
-                            {% endwith %}
+                                {% endwith %}
                             </div>
                         </div>
-
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>

@@ -38,6 +38,10 @@ body {
     margin-bottom: -50px;
 }
 
+.text-copyright {
+    color: black;
+}
+
 
 /* Media queries */
 @media only screen and (max-width: 1200px) {
