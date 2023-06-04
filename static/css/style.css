@@ -35,13 +35,19 @@
 
 body {
     background-color: #F5EFE7;
-    margin-bottom: -50px;
 }
 
 .text-copyright {
     color: black;
 }
 
+main {
+    margin-bottom: 40px;
+}
+
+.main-min-height {
+    min-height: calc(100vh - 245px);
+}
 
 /* Media queries */
 @media only screen and (max-width: 1200px) {
