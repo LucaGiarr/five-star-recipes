@@ -17,13 +17,21 @@
 </head>
 
 <body>
-
+    <div class="row text-center">
+        <a class=" navbar-brand" href="{% url 'home' %}">
+            <img src="/static/images/logo1-250x250.webp" alt="website logo">
+        </a>
+    </div>
     <!-- Navigation -->
     <div class="container-fluid bg-body-nav">
         <div class="container">
             <nav class="navbar navbar-expand-xl">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{% url 'home' %}">HERE THE LOGO</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
                     {% block navbar-categories-logs %}
 

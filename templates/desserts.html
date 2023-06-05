@@ -2,11 +2,6 @@
 
 {% block navbar-categories-logs %}
 
-<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
@@ -16,13 +11,16 @@
     <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 ps-3 my-auto">
             <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">All Recipes</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'starters' %}">Starters</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
+                <a class="nav-link active" href="{% url 'desserts' %}"><strong>Desserts</strong></a>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'other' %}">Other</a>
             </li>
@@ -96,14 +94,14 @@
 
                         <div class="row">
                             <!-- Likes -->
-                            <div class="col-3 p-right-0">
+                            <div class="col-3 pe-0">
                                 <p class="card-text text-muted h6">
                                     <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
                                 </p>
                             </div>
 
                             <!-- Comments icon -->
-                            <div class="col-3 p-left-0">
+                            <div class="col-3 ps-0">
                                 {% with recipe.approved_comments.count as total_comments %}
                                 <p class="text-muted h6">
                                     <i class="far fa-message"></i> {{ total_comments }}
