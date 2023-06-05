@@ -42,6 +42,9 @@ class Recipe(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    def approved_comments(self):
+        return self.comments.filter(approved=True)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)

@@ -28,7 +28,6 @@ class DessertsList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, category=2)
     template_name = 'desserts.html'
-    paginate_by = 6
 
 
 class OtherList(generic.ListView):
