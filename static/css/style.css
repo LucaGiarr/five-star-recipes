@@ -52,10 +52,6 @@ main {
 /* Media queries */
 @media only screen and (max-width: 1200px) {
 
-    .search-bar-large-screen {
-        display: none;
-    }
-
     .marg-left-right {
         margin: 0 15px;
     }
@@ -63,10 +59,6 @@ main {
 }
 
 @media only screen and (min-width: 1200px) {
-
-    .search-bar-small-screen {
-        display: none;
-    }
 
     .nav-link:focus {
         color: black;
@@ -80,7 +72,11 @@ main {
 }
 
 .card-text p {
-    height: 90px;
+    height: 110px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 /* styles New entries section */
@@ -161,6 +157,14 @@ main {
 
 .p-left-right-0 {
     padding-left: 0;
+    padding-right: 0;
+}
+
+.p-left-0 {
+    padding-left: 0;
+}
+
+.p-right-0 {
     padding-right: 0;
 }
 
