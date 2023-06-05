@@ -98,19 +98,20 @@
 
                         <div class="row">
                             <!-- Likes -->
-                            <div class="col-2">
+                            <div class="col-3 p-right-0">
                                 <p class="card-text text-muted h6">
                                     <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
                                 </p>
                             </div>
 
                             <!-- Comments icon -->
-                            <div class="col-2">
+                            <div class="col-3 p-left-0">
                                 {% with recipe.approved_comments.count as total_comments %}
                                 <p class="text-muted h6">
                                     <i class="far fa-message"></i> {{ total_comments }}
                                 </p>
                                 {% endwith %}
+
                             </div>
                         </div>
                     </div>
