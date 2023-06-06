@@ -68,6 +68,19 @@
 <!-- section title and image of recipe -->
 <section>
     <div class="container pt-2">
+
+        <!-- Popup message comment approval -->
+        <div class="row text-center">
+            <div class="col">
+                {% if commented %}
+                <div class="alert alert-success fade show" id="msg" role="alert">
+                    Thanks! Your comment is waiting for approval.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
         <div class="row text-center">
             <h1 class="p-3">{{ recipe.title }}</h1>
         </div>
@@ -250,13 +263,6 @@
 
                 {% if user.is_authenticated %}
                 <div class="col col-lg-4">
-                    {% if commented %}
-                    <div class="alert alert-success fade show" id="msg" role="alert">
-                        Thanks! Your comment is waiting for approval.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endif %}
-
                     <p class="pt-1">Posting as: {{ user.username }}</p>
                     <form method="post" style="margin-top: 1.3em;">
                         {{ comment_form | crispy }}
