@@ -51,20 +51,16 @@ main {
 
 /* Media queries */
 @media only screen and (max-width: 1200px) {
-
     .marg-left-right {
         margin: 0 15px;
     }
-
 }
 
 @media only screen and (min-width: 1200px) {
-
     .nav-link:focus {
         color: black;
         font-weight: bold;
     }
-
 }
 
 .card-title {
@@ -83,37 +79,10 @@ main {
 .card {
     border: none;
     box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-
 }
-
-/* .m--12px {
-    margin: -12px;
-}
-
-.p-12px {
-    padding: 12px;
-} */
-
-/* .carousel-control-prev,
-.carousel-control-next {
-    background-color: #e1e1e1;
-    width: 6vh;
-    height: 6vh;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.carousel-control-prev span,
-.carousel-control-next span {
-    width: 1.5rem;
-    height: 1.5rem;
-} */
-
 
 /* styles recipe */
 .text-line {
-
     width: 100%;
     border-bottom: 1px solid #000;
     line-height: 0.1em;
@@ -122,19 +91,16 @@ main {
 
 .text-line span,
 .text-line-comments span {
-
     background-color: whitesmoke;
     padding: 0 20px 0 0;
 }
 
 .container-recipe {
-    /* padding: 0 100px; */
     margin: 0 100px;
 }
 
 .coloured-box,
 .coloured-box-comments {
-    /* padding: 20px 40px 0 40px; */
     margin: 25px;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -147,7 +113,6 @@ main {
 }
 
 .text-line-comments span {
-
     background-color: white;
 }
 
