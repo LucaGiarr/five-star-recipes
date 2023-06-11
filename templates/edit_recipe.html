@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'other' %}"><strong>Other</strong></a>
+                <a class="nav-link" href="{% url 'other' %}">Other</a>
             </li>
         </ul>
 
@@ -38,7 +38,7 @@
                 <a class="btn dropdown-toggle nav-link align-left p-left-right-0 active"
                     href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ user.username }}
+                    <strong>{{ user.username }}</strong>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -78,7 +78,7 @@
         {% if user.is_authenticated %}
         {% if user.is_authenticated and user == recipe.author %}
         {% load cloudinary %}
-        <div class="row">
+        <div class="row pe-3">
             <div class="col-md-8 mt-3 offset-md-2">
 
                 <form method="POST" enctype="multipart/form-data">

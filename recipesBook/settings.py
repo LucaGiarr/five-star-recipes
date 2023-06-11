@@ -73,6 +73,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+SUMMERNOTE_CONFIG = {
+    'width': '100%',
+}
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
