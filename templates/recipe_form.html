@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block navbar-categories-logs %}
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -64,60 +66,35 @@
 {% endblock %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
-<!-- Section All Recipes -->
-<section>
-    <div class="container text-center">
+<div class="container">
+    <div class="col coloured-box ps-3">
         <div class="row">
-            <div class="col">
-                <p>
-                <h2 class="line-text-line"><span>Favourite Recipes</span></h2>
-                </p>
+            <div class="col-md-8 mt-3 offset-md-2">
+
+                <h3>{% trans "Add a Recipe" %}</h3>
+
             </div>
         </div>
-    </div>
+        {% if user.is_authenticated %}
+        {% load cloudinary %}
+        <div class="row">
+            <div class="col-md-8 mt-3 offset-md-2">
 
-    <!-- Grid Favourites Recipes -->
-    <div class="container">
-        <div class="row g-3 mt-3">
+                <form method="POST" enctype="multipart/form-data">
 
-            {% for recipe in fav_list %}
-            <div class="col-12 col-lg-4">
-                <div class="card">
-                    <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a class="card-title-link" href="{% url 'recipe_details' recipe.slug %}">
-                            <h5 class="card-title">{{ recipe.title }}</h5>
-                        </a>
-                        <!-- Description -->
-                        <div class="card-text">
-                            {{ recipe.description| safe }}
-                        </div>
+                    {{ form | crispy }}
+                    {% csrf_token %}
 
-                        <div class="row">
-                            <!-- Likes -->
-                            <div class="col-3 pe-0">
-                                <p class="card-text text-muted h6">
-                                    <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
-                                </p>
-                            </div>
+                    <button class="btn btn-success mt-2 mb-4" type="submit">Submit</button>
+                    <a class="btn btn m-2" href="{%  url 'home' %}">Cancel</a>
+                </form>
 
-                            <!-- Comments icon -->
-                            <div class="col-3 ps-0">
-                                {% with recipe.approved_comments.count as total_comments %}
-                                <p class="text-muted h6">
-                                    <i class="far fa-message"></i> {{ total_comments }}
-                                </p>
-                                {% endwith %}
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            {% endfor %}
         </div>
+        {% endif %}
     </div>
-</section>
+</div>
 
-{%endblock%}
+{% endblock %}

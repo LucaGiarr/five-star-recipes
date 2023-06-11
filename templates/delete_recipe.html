@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block navbar-categories-logs %}
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -22,7 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
             <li class="nav-item">
-                <a class="nav-link active" href="{% url 'other' %}"><strong>Other</strong></a>
+                <a class="nav-link" href="{% url 'other' %}"><strong>Other</strong></a>
             </li>
         </ul>
 
@@ -33,7 +35,7 @@
 
             {% if user.is_authenticated %}
             <div class="dropdown show">
-                <a class="btn dropdown-toggle nav-link align-left p-left-right-0"
+                <a class="btn dropdown-toggle nav-link align-left p-left-right-0 active"
                     href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ user.username }}
@@ -62,60 +64,50 @@
 {% endblock %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
-<!-- Section Other Recipes -->
-<section>
-    <div class="container text-center">
+<div class="container">
+    <div class="col coloured-box ps-3">
         <div class="row">
-            <div class="col">
-                <p>
-                <h2 class="line-text-line"><span>Other Recipes</span></h2>
-                </p>
+            <div class="col-md-8 mt-3 offset-md-2">
+
+                <h3>{% trans "Delete Recipe" %}</h3>
+
             </div>
         </div>
-    </div>
+        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user == recipe.author %}
+        {% load cloudinary %}
+        <div class="row">
+            <div class="col-md-8 mt-3 offset-md-2">
 
-    <!-- Grid Other Recipes -->
-    <div class="container">
-        <div class="row g-3 mt-3">
+                <p>Are you sure you want to delete this recipe?</p>
 
-            {% for recipe in recipe_list %}
-            <div class="col-12 col-lg-4">
-                <div class="card">
-                    <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a class="card-title-link" href="{% url 'recipe_details' recipe.slug %}">
-                            <h5 class="card-title">{{ recipe.title }}</h5>
-                        </a>
-                        <!-- Description -->
-                        <div class="card-text">
-                            {{ recipe.description| safe }}
-                        </div>
+                <form method="POST">
 
-                        <div class="row">
-                            <!-- Likes -->
-                            <div class="col-3 pe-0">
-                                <p class="card-text text-muted h6">
-                                    <i class="far fa-heart"></i> {{ recipe.number_of_likes }}
-                                </p>
-                            </div>
+                    {% csrf_token %}
 
-                            <!-- Comments icon -->
-                            <div class="col-3 ps-0">
-                                {% with recipe.approved_comments.count as total_comments %}
-                                <p class="text-muted h6">
-                                    <i class="far fa-message"></i> {{ total_comments }}
-                                </p>
-                                {% endwith %}
+                    <button class="btn btn-danger mt-2 mb-4" type="submit">Delete</button>
+                    <a class="btn btn-secondary m-2 mb-4" href="{%  url 'home' %}">Cancel</a>
+                </form>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            {% endfor %}
         </div>
-    </div>
-</section>
 
-{%endblock%}
+        {% else %}
+        <div class="row">
+            <div class="col-md-8 mt-3 offset-md-2">
+
+                <p>You are not allowed to delete this recipe.</p>
+
+                <a class="btn btn-secondary mt-2 mb-2" href="{%  url 'home' %}">Back to Home</a>
+
+            </div>
+        </div>
+        {% endif %}
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

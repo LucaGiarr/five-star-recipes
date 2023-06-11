@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
+from django_extensions.db.fields import AutoSlugField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -10,7 +12,7 @@ CATEGORY = ((0, "Starter"), (1, "Main Course"),
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_recipes"
     )
@@ -35,6 +37,9 @@ class Recipe(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
+
+    def get_absolute_url(self):
+        return reverse('recipe_details',  kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title

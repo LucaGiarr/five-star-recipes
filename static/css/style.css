@@ -75,7 +75,6 @@ main {
     box-shadow: none;
 }
 
-/* styles New entries section */
 .card {
     border: none;
     box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
@@ -136,6 +135,8 @@ main {
 /* Styles recipe_details */
 .like-comments-row {
     margin: 10px 0 0 10px;
+    height: 45px;
+    line-height: 45px;
 }
 
 .btn-like,
@@ -160,8 +161,9 @@ main {
 }
 
 .sm-width-icons {
-    width: 65px;
+    width: 75px;
     text-align: center;
+    line-height: 45px;
 }
 
 .card-title-link {

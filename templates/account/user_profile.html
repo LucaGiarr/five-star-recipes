@@ -44,8 +44,8 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{% url 'user_profile' user.id %}">My Profile</a>
+                    <a class="dropdown-item" href="{% url 'personal_recipes' %}">Personal Recipes</a>
                     <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourite recipes</a>
-                    <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
                     <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
                 </div>
             </div>
@@ -83,6 +83,8 @@
                 {% endif %}
                 <p><strong>Change password: </strong> <a href="{% url 'account_change_password' %}">Change Password</a>
                 </p>
+                <p><strong>Create a Recipe: </strong> <a href="{% url 'create_recipe' %}">New Recipe</a> </p>
+                <p><strong>Personal Recipes: </strong> <a href="{% url 'personal_recipes' %}">Personal Recipes</a> </p>
                 <p><strong>Favourite Recipes: </strong> <a href="{% url 'favourite_list' %}">Favourites</a> </p>
             </div>
         </div>

@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.views.generic import DetailView
 from django.http import HttpResponseRedirect
 from .models import Recipe, UserProfile
-from .forms import CommentForm
+from .forms import RecipeForm, CommentForm
 
 
 class RecipeList(generic.ListView):
@@ -102,6 +102,34 @@ class RecipeDetails(View):
         )
 
 
+class PersonalRecipesList(generic.ListView):
+    model = Recipe
+    template_name = 'personal_recipes.html'
+
+    def get_queryset(self):
+        return Recipe.objects.filter(author=self.request.user)
+
+
+class RecipeCreateView(generic.CreateView):
+    form_class = RecipeForm
+    template_name = 'recipe_form.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class RecipeEditView(generic.UpdateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'edit_recipe.html'
+
+
+class RecipeDeleteView(generic.DeleteView):
+    model = Recipe
+    template_name = 'delete_recipe.html'
+
+
 class RecipeLike(View):
 
     def post(self, request, slug):
@@ -143,5 +171,5 @@ class ShowProfilePage(DetailView):
 
 
 def favourite_list(request):
-    new = Recipe.objects.filter(favourites=request.user)
-    return render(request, 'favourites.html', {'new': new})
+    fav_list = Recipe.objects.filter(favourites=request.user)
+    return render(request, 'favourites.html', {'fav_list': fav_list})
