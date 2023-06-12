@@ -69,7 +69,7 @@ main {
     }
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1201px) and (max-width: 1399px) {
     .nav-link:focus {
         color: black;
         font-weight: bold;
@@ -77,6 +77,17 @@ main {
 
     .card-img-top {
         height: 240.88px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .nav-link:focus {
+        color: black;
+        font-weight: bold;
+    }
+
+    .card-img-top {
+        height: 280.88px;
     }
 }
 
