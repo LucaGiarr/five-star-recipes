@@ -38,8 +38,8 @@ class OtherList(generic.ListView):
 
 class RecipeDetails(View):
 
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Recipe.objects.filter(status=1)
+    def get(self, request, slug):
+        queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('created_on')
 
@@ -64,7 +64,7 @@ class RecipeDetails(View):
             },
         )
 
-    def post(self, request, slug, *args, **kwargs):
+    def post(self, request, slug):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('created_on')
@@ -123,6 +123,10 @@ class RecipeEditView(generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'edit_recipe.html'
+
+    def post(self, slug):
+
+        return HttpResponseRedirect(reverse('recipe_details', args=[slug]))
 
 
 class RecipeDeleteView(generic.DeleteView):
