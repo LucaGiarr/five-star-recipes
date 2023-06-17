@@ -86,7 +86,12 @@
         </div>
         <div class="row">
             <div class="col text-center">
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img src="https://res.cloudinary.com/lu1725gia/image/upload/v1687021731/static/images/panino-with-mortadella.jpg"
+                    class="img-fluid" alt="placeholder image">
+                {% else %}
                 <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="recipe image">
+                {% endif %}
             </div>
         </div>
 

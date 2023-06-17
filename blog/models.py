@@ -16,7 +16,7 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_recipes"
     )
-    featured_image = CloudinaryField('image')
+    featured_image = CloudinaryField('image', default='placeholder')
     website = models.TextField(blank=True)
     website_url = models.URLField(max_length=200, blank=True)
     description = models.TextField(blank=True)

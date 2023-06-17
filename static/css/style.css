@@ -211,3 +211,8 @@ main {
 .form-group {
     margin: 15px 0;
 }
+
+/* Styles Personal recipe */
+.draft {
+    color: red;
+}

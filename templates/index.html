@@ -81,7 +81,12 @@
             {% for recipe in recipe_list %}
             <div class="col-12 col-lg-4">
                 <div class="card">
-                    <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="...">
+                    {% if "placeholder" in recipe.featured_image.url %}
+                    <img src="https://res.cloudinary.com/lu1725gia/image/upload/v1687021731/static/images/panino-with-mortadella.jpg"
+                        class="card-img-top" alt="image placeholder">
+                    {% else %}
+                    <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="recipe image">
+                    {% endif %}
                     <div class="card-body">
                         <a class="card-title-link" href="{% url 'recipe_details' recipe.slug %}">
                             <h5 class="card-title">{{ recipe.title }}</h5>
