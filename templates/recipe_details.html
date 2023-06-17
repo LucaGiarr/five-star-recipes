@@ -93,14 +93,27 @@
         <div class="row like-comments-row mt-4">
             <div class="col col-lg-2">
                 <!-- Author -->
-                <p>
+                <p class="mb-0">
                     <strong>Author:</strong> {{ recipe.author }}
                 </p>
             </div>
+        </div>
 
+        <div class="row like-comments-row">
+            <div class="col col-lg-2">
+                <!-- Website -->
+                <p class="mb-0">
+                    <strong>Website: </strong>
+                    <a href="{{ recipe.website_url }}" target="_blank">
+                        {{ recipe.website }}
+                    </a>
+                </p>
+            </div>
+        </div>
 
+        <div class="row like-comments-row">
             <!-- Likes icon -->
-            <div class="col-2 p-0 sm-width-icons">
+            <div class="width-65px p-0 text-center">
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'recipe_like' recipe.slug %}" method="POST">
                     {% csrf_token %}
@@ -124,7 +137,7 @@
             </div>
 
             <!-- Favourites icon -->
-            <div class="col-4 p-0 sm-width-icons">
+            <div class="width-40px p-0 text-center">
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'recipe_favourite' recipe.slug %}" method="POST">
                     {% csrf_token %}
@@ -147,7 +160,7 @@
             </div>
 
             <!-- Comments icon -->
-            <div class="col-2 p-0 sm-width-icons">
+            <div class="width-65px p-0 text-center">
                 {% with comments.count as total_comments %}
                 <span class="text-muted h6">
                     <i class="far fa-message"></i> {{ total_comments }}
@@ -157,33 +170,17 @@
 
             <!-- Edit and Delete icons -->
             {% if user.is_authenticated and user == recipe.author %}
-            <div class="col-3 p-0">
-
+            <div class="col ps-0">
                 <a class="btn text-muted p-0 h-100 sm-width-icons" href="{%  url 'edit_recipe' recipe.slug %}"><i
                         class="fa-regular fa-pen-to-square"></i>
-                    Edit</a>
+                </a>
                 <a class="btn text-muted p-0 h-100 sm-width-icons" href="{%  url 'delete_recipe' recipe.slug %}"><i
                         class="fa-regular fa-trash-can"></i>
-                    Delete</a>
-
+                </a>
             </div>
             {% endif %}
         </div>
-
-        <div class="row like-comments-row">
-            <div class="col">
-                <!-- Website link -->
-                <p>
-                    <strong>Website: </strong>
-                    <a href="{{ recipe.website_url }}" target="_blank">
-                        {{ recipe.website }}
-                    </a>
-
-                </p>
-            </div>
-        </div>
     </div>
-
 </section>
 
 <!-- section ingredients -->
