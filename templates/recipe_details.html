@@ -219,7 +219,18 @@
                         <li>Cooking Time: {{ recipe.cooking_time | safe }}</li>
                         <li>Serves: {{ recipe.serves | safe }}</li>
                         <li>Difficulty: {{ recipe.difficulty | safe }}</li>
-                        <li>Category: {{ recipe.category | safe }}</li>
+                        <li>
+                            Category:
+                            {% if recipe.category == 0 %}
+                            Starters
+                            {% elif recipe.category == 1 %}
+                            Main Courses
+                            {% elif recipe.category == 2 %}
+                            Desserts
+                            {% else %}
+                            other
+                            {% endif %}
+                        </li>
                     </ul>
                 </div>
             </div>
