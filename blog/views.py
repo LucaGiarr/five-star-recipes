@@ -114,19 +114,11 @@ class RecipeCreateView(generic.CreateView):
     form_class = RecipeForm
     template_name = 'recipe_form.html'
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
 
 class RecipeEditView(generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'edit_recipe.html'
-
-    def post(self, slug):
-
-        return HttpResponseRedirect(reverse('recipe_details', args=[slug]))
 
 
 class RecipeDeleteView(generic.DeleteView):
