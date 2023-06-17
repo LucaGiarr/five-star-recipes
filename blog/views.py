@@ -4,6 +4,7 @@ from django.views.generic import DetailView
 from django.http import HttpResponseRedirect
 from .models import Recipe, UserProfile
 from .forms import RecipeForm, CommentForm
+from django.urls import reverse_lazy
 
 
 class RecipeList(generic.ListView):
@@ -114,6 +115,10 @@ class RecipeCreateView(generic.CreateView):
     form_class = RecipeForm
     template_name = 'recipe_form.html'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 class RecipeEditView(generic.UpdateView):
     model = Recipe
@@ -124,6 +129,7 @@ class RecipeEditView(generic.UpdateView):
 class RecipeDeleteView(generic.DeleteView):
     model = Recipe
     template_name = 'delete_recipe.html'
+    success_url = reverse_lazy('personal_recipes')
 
 
 class RecipeLike(View):
