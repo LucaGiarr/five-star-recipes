@@ -118,9 +118,13 @@
                 <!-- Website -->
                 <p class="mb-0">
                     <strong>Website: </strong>
+                    {% if recipe.website_url == "" %}
+                    -
+                    {% else %}
                     <a href="{{ recipe.website_url }}" target="_blank">
                         {{ recipe.website }}
                     </a>
+                    {% endif %}
                 </p>
             </div>
         </div>
