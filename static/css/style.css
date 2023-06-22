@@ -123,7 +123,7 @@ main {
 
 .text-line span,
 .text-line-comments span {
-    background-color: whitesmoke;
+    background-color: white;
     padding: 0 20px 0 0;
 }
 
@@ -134,13 +134,12 @@ main {
 .coloured-box,
 .coloured-box-comments {
     margin: 25px;
-    border: 1px solid lightgray;
     border-radius: 5px;
-    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    background-color: white;
 }
 
 .coloured-box-comments {
-    background-color: white;
     border: white;
 }
 
