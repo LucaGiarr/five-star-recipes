@@ -53,12 +53,14 @@
                 </ul>
             </div>
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
-            </li>
+            <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+                </li>
+            </ul>
             {% endif %}
 
         </ul>
@@ -74,9 +76,7 @@
     <div class="col coloured-box ps-3">
         <div class="row">
             <div class="col-md-8 mt-3 offset-md-2">
-
                 <h3>{% trans "Delete Recipe" %}</h3>
-
             </div>
         </div>
         {% if user.is_authenticated %}
