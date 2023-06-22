@@ -33,7 +33,7 @@ DEBUG = False
 
 X_FRAME_OPTION = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['8000-lucagiarr-five-star-reci-h8z6uc98ax.us2.codeanyapp.com',
+ALLOWED_HOSTS = ['8000-lucagiarr-five-star-reci-siouwfi3nc.us2.codeanyapp.com',
                  'five-star-recipes.herokuapp.com']
 
 
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_summernote',
     'crispy_forms',
-    'blog',
+    'blog.apps.BlogConfig',
 ]
 
 SITE_ID = 1
