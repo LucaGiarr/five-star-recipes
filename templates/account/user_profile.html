@@ -22,10 +22,9 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav my-auto marg-left-right">
-        <li>
-            <hr>
-        </li>
+    <div class="navbar-nav my-auto marg-left-right">
+
+        <hr>
 
         {% if user.is_authenticated %}
 
@@ -58,7 +57,7 @@
         </ul>
         {% endif %}
 
-    </ul>
+    </div>
 </div>
 
 {% endblock %}
