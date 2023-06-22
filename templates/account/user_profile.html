@@ -4,68 +4,61 @@
 
 {% block navbar-categories-logs %}
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
+<div class="offcanvas-body">
+    <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">All Recipes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'starters' %}">Starters</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'other' %}">Other</a>
+        </li>
+    </ul>
 
-    <div class="offcanvas-body">
-        <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'home' %}">All Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'starters' %}">Starters</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'main_courses' %}">Main Courses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'desserts' %}">Desserts</a>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'other' %}">Other</a>
-            </li>
-        </ul>
+    <ul class="navbar-nav my-auto marg-left-right">
+        <li>
+            <hr>
+        </li>
 
-        <ul class="navbar-nav my-auto marg-left-right">
-            <li>
-                <hr>
-            </li>
+        {% if user.is_authenticated %}
 
-            {% if user.is_authenticated %}
-
-            <div class="dropdown show">
-                <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
-                    <li>
-                        <a class="btn dropdown-toggle nav-link align-left p-left-right-0"
-                            href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ user.username }}
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item nav-link" href="{% url 'user_profile' user.id %}">My Profile</a>
-                            <a class="dropdown-item nav-link" href="{% url 'personal_recipes' %}">Personal Recipes</a>
-                            <a class="dropdown-item nav-link" href="{% url 'favourite_list' %}">Favourite recipes</a>
-                            <a class="dropdown-item nav-link" href="{% url 'account_logout' %}">Sign Out</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            {% else %}
+        <div class="dropdown show">
             <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+                <li>
+                    <a class="btn dropdown-toggle nav-link align-left p-left-right-0"
+                        href="{% url 'user_profile' user.id %}" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ user.username }}
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item nav-link" href="{% url 'user_profile' user.id %}">My Profile</a>
+                        <a class="dropdown-item nav-link" href="{% url 'personal_recipes' %}">Personal Recipes</a>
+                        <a class="dropdown-item nav-link" href="{% url 'favourite_list' %}">Favourite recipes</a>
+                        <a class="dropdown-item nav-link" href="{% url 'account_logout' %}">Sign Out</a>
+                    </div>
                 </li>
             </ul>
-            {% endif %}
-
+        </div>
+        {% else %}
+        <ul class="navbar-nav flex-grow-1 ps-3 ps-xl-0 my-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+            </li>
         </ul>
-    </div>
+        {% endif %}
+
+    </ul>
 </div>
 
 {% endblock %}
