@@ -133,7 +133,7 @@ Wireframes for tablet are the same as per mobile.
 #### Desktop
 
 - [All Recipes / Main Courses / Desserts / Other / Personal Recipes / Favourites](docs/wireframes/recipes_all_desk.PNG)
-- [As above but when the user is logged in](docs/wireframes/recipes_all_desk_user.PNG)
+- [All above pages but when the user is logged in](docs/wireframes/recipes_all_desk_user.PNG)
 - [Sign In](docs/wireframes/sign_in_desk.PNG)
 - [Sign Up](docs/wireframes/sign_up_desk.PNG)
 - [My Profile](docs/wireframes/my_profile_desk.PNG)
