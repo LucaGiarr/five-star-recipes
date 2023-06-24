@@ -185,19 +185,19 @@ If incorrect data is added to a form, the form won't submit and a warning will a
 
 ### Database Security
 
-The database url and secret key are stored in the env.py.This was set up before the first push to Github.
+The database url and secret key are stored in the env.py. This was set up before the first push to Github.
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this app.
 
 ## Features
 
-The app starts from the "All Recipes" page whis is the home page. From this page the user can navigate to all the other pages present in within this app. On top of each page is the logo. When it is clicked, it will open the home page.
-In the navigation bar the user is able to filter the recipes depending on the categories (All Recipes, Starters, Main Courses, Desserts and Other). He/she can also Sign up or Sign In.
-The recipes are shown as cards with essential info provided in the pages All Recipes, Starters, Main Courses, Desserts and Other (Personal Recipe and Favourite Recipes when the user is signed in). More detailed info are provided in the recipe details page (one for each recipe) when the recipe's title is clicked in the recipe's card.
-A user can Sign up and Sign in. Once he/she signes in, a My profile page will be created with useful links to change password, create a recipe, to the personal recipe page (which is the page where the recipe create by the user will be stored) and to the favourite recipes page where the saved/bookmarked recipes will be stored.
-While a user is signed in, he/she will be able to like, save/bookmark and comment on a recipe (features that are not allowed to a non signed in user).
-A signed in user will also be able to create, edit and delete his/her own recipes.
-Signed in users cannot edit and/or delete other's user recipes. If he/she tries to do it, a warning message is displayed.
+The app starts from the "All Recipes" page which is the home page. From this page, the user can navigate to all the other pages present within this app. On top of each page is the logo. When it is clicked, it will open the home page.
+In the navigation bar, the user is able to filter the recipes depending on the categories (All Recipes, Starters, Main Courses, Desserts and Other). He/she can also Sign up or Sign In.
+The recipes are shown as cards with essential info provided on the pages All Recipes, Starters, Main Courses, Desserts and Other (Personal Recipe and Favourite Recipes when the user is signed in). More detailed info is provided on the recipe details page (one for each recipe) when the recipe's title is clicked on the recipe's card.
+A user can Sign up and Sign in. Once he/she signs in, a My Profile page will be created with useful links to change password, create a recipe, to the personal recipe page (which is the page where the recipe created by the user will be stored) and to the favourite recipes page where the saved/bookmarked recipes will be stored.
+While a user is signed in, he/she will be able to like, save/bookmark and comment on a recipe (features that are not allowed for a non-signed-in user).
+A signed-in user will also be able to create, edit and delete his/her own recipes.
+Signed-in users cannot edit and/or delete other's user recipes. If he/she tries to do it, a warning message is displayed.
 
 ![All Recipes](docs/features_images/all_recipes.jpeg)
 

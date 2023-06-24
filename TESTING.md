@@ -41,7 +41,7 @@ _As a Site User/Site Admin I can create, read, update and delete recipes so that
 
 - A link to create a new recipe is present in the user profile page.
 
-- [Create a Recipe](docs/testing_images/us_manage_recipes_0.png)
+- [My Profile](docs/testing_images/us_manage_recipes_0.png)
 - [Create a Recipe](docs/testing_images/us_manage_recipes_1.png)
 
 - Icons are present in the recipe details to allow the author of the recipe to edit and delete the recipe.
@@ -62,11 +62,11 @@ _As a Site User/Site Admin I can create draft recipes so that I can finish writi
 
 - At the end of the "create a recipe" page, Draft is the default status.
 
-- [Create a Draft](docs/testing_images/us_create_drafts_1.png)
+- [Create a Draft](docs/testing_images/us_create_draft_1.png)
 
 - If Submit is clicked, the recipe will be saved as draft and a red label "(Draft)" will follow the title of the recipe.
 
-- ["(Draft)" red label](docs/testing_images/us_create_drafts_2.png)
+- ["(Draft)" red label](docs/testing_images/us_create_draft_2.png)
 
 - The recipe will be accessible to view, read, edited and delete in the "Personal Recipes".
 
