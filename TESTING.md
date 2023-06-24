@@ -78,7 +78,7 @@ _As a Site User/Site Admin I can view the number of likes on each recipe so that
 
 - Views can be seen in the recipe's card and in the recipe details page (under the "Website" link).
 
-- [View number of likes in the recipe's card](docs/testing_images/us_view_likes_1.png)
+- [View number of likes in the recipe's card](docs/testing_images/us_view_likes_1.jpeg)
 - [View number of likes in the recipe details page](docs/testing_images/us_view_likes_2.png)
 
 ### View comments
@@ -87,8 +87,8 @@ _As a Site User/Site Admin I can view the comments on each recipe so that I can 
 
 - Comments can be seen in the recipe's card (just the number of comments) and at the end of the recipe details page.
 
-- [View number of comments in the recipe's card](docs/testing_images/us_view_likes_1.jpeg)
-- [View number of comments in the recipe details page](docs/testing_images/us_view_likes_2.png)
+- [View number of comments in the recipe's card](docs/testing_images/us_view_comments_1.png)
+- [View number of comments in the recipe details page](docs/testing_images/us_view_comments_2.png)
 
 ### Leave a comment
 
