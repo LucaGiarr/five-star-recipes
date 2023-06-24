@@ -350,7 +350,7 @@ To clone this repository follow the below steps:
 - [AutoSlugField](https://django-extensions.readthedocs.io/en/latest/field_extensions.html)
 - [Create a user bookmark](https://www.youtube.com/watch?v=H4QPHLmsZMU)
 - [Create a user profile page](https://www.youtube.com/watch?v=zb4fIvtn4tY)
-- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog): I reused some of the code present in these lessons.
 - Valentina Rainato for the logo.
 
 ## Acknowledgments
