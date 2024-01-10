@@ -35,7 +35,7 @@ DEBUG = True
 X_FRAME_OPTION = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['8000-lucagiarr-five-star-reci-siouwfi3nc.us2.codeanyapp.com',
-                 'five-star-recipes.herokuapp.com', '127.0.0.1']
+                 'five-star-recipes.herokuapp.com', '8000-lucagiarr-fivestarrecip-xj70ds1etce.ws-eu107.gitpod.io']
 # Application definition
 
 INSTALLED_APPS = [
@@ -120,8 +120,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME':
-            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',

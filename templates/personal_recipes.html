@@ -71,6 +71,18 @@
         </div>
     </div>
 
+    <!-- Popup message recipe deleted -->
+    <div class="row text-center">
+        <div class="col">
+            {% if request.session.recipe_deleted %}
+            <div class="alert alert-success fade show" id="msg" role="alert">
+                {{ request.session.recipe_deleted }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
     <!-- Grid Favourites Recipes -->
     <div class="container">
         <div class="row g-3 mt-3">

@@ -67,12 +67,17 @@
 <section>
     <div class="container pt-2">
 
-        <!-- Popup message comment approval -->
+        <!-- Popup messages on comments, create and edit recipe -->
         <div class="row text-center">
             <div class="col">
                 {% if commented %}
                 <div class="alert alert-success fade show" id="msg" role="alert">
                     Thanks! Your comment is waiting for approval.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% elif 'recipe_message' in request.session %}
+                <div class="alert alert-success fade show" id="msg" role="alert">
+                    {{ request.session.recipe_message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endif %}

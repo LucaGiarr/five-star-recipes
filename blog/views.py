@@ -117,7 +117,15 @@ class RecipeCreateView(generic.CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        # Set a session variable to indicate that the recipe was just created
+        if form.instance.status == 0:
+            self.request.session['recipe_message'] = 'Draft created successfully.'
+        else:
+            self.request.session['recipe_message'] = 'Recipe created successfully.'
+
+        return response
 
 
 class RecipeEditView(generic.UpdateView):
@@ -125,11 +133,28 @@ class RecipeEditView(generic.UpdateView):
     form_class = RecipeForm
     template_name = 'edit_recipe.html'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        response = super().form_valid(form)
+
+        # Set a session variable to indicate that the recipe was just edited
+        self.request.session['recipe_message'] = 'Recipe updated successfully.'
+
+        return response
+
 
 class RecipeDeleteView(generic.DeleteView):
     model = Recipe
     template_name = 'delete_recipe.html'
     success_url = reverse_lazy('personal_recipes')
+
+    def delete(self, request, *args, **kwargs):
+        response = super().delete(request, *args, **kwargs)
+
+        # Set a session variable to indicate that the recipe was just deleted
+        self.request.session['recipe_deleted'] = 'Recipe deleted successfully.'
+
+        return response
 
 
 class RecipeLike(View):
