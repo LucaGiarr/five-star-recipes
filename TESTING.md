@@ -316,6 +316,10 @@ Manual testing were performed for both desktop and mobile. Because of time restr
 
 - **Fix** Solution obtained following the video at this [link](https://www.youtube.com/watch?v=Kc1Q_ayAeQk).
 
+#### Error 500 when a user Signs up or Signs in
+
+- **Fix** I made sure that each item in the list of the "AUTH_PASSWORD_VALIDATORS" in settings.py was in a single line.
+
 ### Unfixed bugs
 
 Currently there are no known unfixed bugs.
